@@ -8,18 +8,21 @@ document.getElementById("voteForm").addEventListener("submit", function(event) {
         alert("Please enter valid details.");
         return;
       }
-	const ageNumber=parseInt(age);
-	const checkEligibilty= new promise((resolve,reject)=>{
-setTimeout(()=>{
-	if(ageNumber>18){
-	resolve(`Welcome,${name}. You can vote.`);
-		}else{
-		reject(`Oh sorry ${name}. You aren't old enough.`);
-		}
-},4000);
-});
- 
- checkEligibility
+
+      // Convert age to a number
+      const ageNumber = parseInt(age);
+
+      const checkEligibility = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (ageNumber > 18) {
+            resolve(`Welcome, ${name}. You can vote.`);
+          } else {
+            reject(`Oh sorry ${name}. You aren't old enough.`);
+          }
+        }, 4000); // 4-second delay
+      });
+
+      checkEligibility
         .then((message) => {
           alert(message);
         })
@@ -27,6 +30,3 @@ setTimeout(()=>{
           alert(error);
         });
     });
-
-
-	
