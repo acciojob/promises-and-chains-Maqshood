@@ -1,5 +1,5 @@
 document.getElementById("voteForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form from actually submitting
+      event.preventDefault(); 
 
       const name = document.getElementById("name").value.trim();
       const age = document.getElementById("age").value.trim();
@@ -19,7 +19,7 @@ document.getElementById("voteForm").addEventListener("submit", function(event) {
           } else {
             reject(`Oh sorry ${name}. You aren't old enough.`);
           }
-        }, 4000); // 4-second delay
+        }, 4000); 
       });
 
       checkEligibility
@@ -30,3 +30,6 @@ document.getElementById("voteForm").addEventListener("submit", function(event) {
           alert(error);
         });
     });
+cy.on("window:alert", (str) => {
+  expect(str).to.equal("Please enter valid details.");
+});
